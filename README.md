@@ -13,7 +13,7 @@ This project contains interactive HTML websites showcasing the filming locations
 - Columns: Location Name, City, Region, Address, Details, Coordinates, Phone, Email, Operator, Website, Source
 - 3 locations with full contact information (Kasteel Rijvissche, Hotel Winterhof, Dorley Plants)
 
-### 2. **index.html.html**
+### 2. **index.html**
 - **Design Style**: Gradient purple theme with card-based layout
 - **Layout**: Bootstrap 5 responsive grid (3 columns on desktop, 2 on tablet, 1 on mobile)
 - **Features**:
