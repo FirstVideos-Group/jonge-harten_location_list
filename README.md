@@ -1,4 +1,4 @@
-# Young Hearts (2024) - Filming Locations Website (HU)
+# Young Hearts (2024) - Filming Locations Website
 
 ## Project Overview
 
@@ -9,11 +9,13 @@ This project contains interactive HTML websites showcasing the filming locations
 ## Files Included
 
 ### 1. **young_hearts_2024_filming_locations.csv**
+
 - Complete database of 18 filming locations
 - Columns: Location Name, City, Region, Address, Details, Coordinates, Phone, Email, Operator, Website, Source
 - 3 locations with full contact information (Kasteel Rijvissche, Hotel Winterhof, Dorley Plants)
 
-### 2. **index.html**
+### 2. **young_hearts_locations_v1.html**
+
 - **Design Style**: Gradient purple theme with card-based layout
 - **Layout**: Bootstrap 5 responsive grid (3 columns on desktop, 2 on tablet, 1 on mobile)
 - **Features**:
@@ -27,6 +29,7 @@ This project contains interactive HTML websites showcasing the filming locations
   - Smooth scroll to top functionality
 
 ### 3. **young_hearts_locations_v2_minimal.html**
+
 - **Design Style**: Clean, minimal design with blue and white color scheme
 - **Layout**: CSS Grid with auto-fill responsive columns
 - **Features**:
@@ -45,11 +48,13 @@ This project contains interactive HTML websites showcasing the filming locations
 ## Filming Locations Summary
 
 ### Geographic Distribution
+
 - **Primary Location**: Wetteren (East Flanders) - Director's hometown
 - **Major Cities**: Brussels, Ghent, Laarne, Lochristi, Viroinval
 - **Total Locations**: 18 documented sites
 
 ### Location Types
+
 1. **Historic Buildings**: Kasteel Rijvissche (abandoned house scenes)
 2. **Urban Landmarks**: Grand Place/Grote Markt, Manneken Pis (Brussels)
 3. **Transportation**: Beervelde Train Station
@@ -60,16 +65,17 @@ This project contains interactive HTML websites showcasing the filming locations
 ### Locations with Contact Information
 
 | Location | Phone | Email | Website |
-|----------|-------|-------|---------|
-| Kasteel Rijvissche | +32 (0)474 93 35 03 | info@zaalrijvissche.be | www.lowiz.org/zaal-rijvissche |
-| Hotel Winterhof | +32 09 369 02 62 | winterhof@proximedia.be | www.winterhof.be |
-| Dorley Plants | +32 494 52 61 52 | info@dorleyplants.be | www.dorleyplants.be |
+| ---------- | ------- | ------- | --------- |
+| Kasteel Rijvissche | +32 (0)474 93 35 03 | <info@zaalrijvissche.be> | <https://www.lowiz.org/zaal-rijvissche> |
+| Hotel Winterhof | +32 09 369 02 62 | <winterhof@proximedia.be> | <https://winterhof.be> |
+| Dorley Plants | +32 494 52 61 52 | <info@dorleyplants.be> | <https://dorleyplants.be> |
 
 ---
 
 ## Technical Specifications
 
 ### Technologies Used
+
 - **HTML5**: Semantic markup
 - **CSS3**: Custom styles with CSS Grid and Flexbox
 - **Bootstrap 5.3.2**: Responsive framework
@@ -78,11 +84,13 @@ This project contains interactive HTML websites showcasing the filming locations
 - **Vanilla JavaScript**: Filter functionality, smooth scrolling
 
 ### Browser Compatibility
+
 - Modern browsers (Chrome, Firefox, Safari, Edge)
 - Mobile-responsive (iOS, Android)
 - Tablet-optimized layouts
 
 ### Key Features
+
 - ✅ Fully responsive design
 - ✅ No server-side dependencies (static HTML)
 - ✅ Interactive filtering system
@@ -120,6 +128,7 @@ Both HTML versions include JavaScript-powered filtering:
 ## Data Sources
 
 Information compiled from:
+
 - IMDb official filming locations
 - Reddit communities (r/younghearts)
 - Local Belgian websites (Lowiz.org, Laarne.be)
@@ -132,16 +141,19 @@ Information compiled from:
 ## Usage Instructions
 
 ### Opening the Website
+
 1. Download the HTML file
 2. Double-click to open in your default browser
 3. No installation or server required
 
 ### Filtering Locations
+
 1. Use the dropdown menu in the filter section
 2. Select desired filter (city, contact availability)
 3. Cards automatically show/hide based on selection
 
 ### Accessing Contact Information
+
 - **Phone numbers**: Click to dial (on mobile devices)
 - **Email addresses**: Click to open email client
 - **Websites**: Click to open in new tab
@@ -151,12 +163,14 @@ Information compiled from:
 ## Design Philosophy
 
 ### Version 1 (Gradient Theme)
+
 - Vibrant, eye-catching purple gradient
 - Cinema-inspired aesthetic
 - Card shadows and hover animations
 - Bold typography for impact
 
 ### Version 2 (Minimal Theme)
+
 - Professional, clean appearance
 - Easy reading with ample white space
 - Subtle color accents
