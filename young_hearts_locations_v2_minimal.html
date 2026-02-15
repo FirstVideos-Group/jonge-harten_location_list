@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Hearts (2024) - Helyszínek</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1a202c !important;
+            font-weight: 700;
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .header-section .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: -40px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .filter-bar select {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-weight: 500;
+        }
+
+        .filter-bar select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .location-item {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border-top: 4px solid #3b82f6;
+        }
+
+        .location-item:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+        }
+
+        .location-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #1a202c;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .location-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: start;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .info-row i {
+            color: #3b82f6;
+            margin-right: 10px;
+            margin-top: 2px;
+            font-size: 1.1rem;
+        }
+
+        .contact-box {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 3px solid #10b981;
+        }
+
+        .contact-box h5 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #059669;
+        }
+
+        .contact-box a {
+            color: #0369a1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .footer-custom {
+            background: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-custom p {
+            margin: 5px 0;
+            color: #64748b;
+        }
+
+        .source-tag {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-section h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <span class="navbar-brand">
+                <i class="bi bi-film"></i> Young Hearts
+            </span>
+            <span class="text-muted">België / 2024</span>
+        </div>
+    </nav>
+
+    <div class="header-section">
+        <div class="container">
+            <h1>Forgatási Helyszínek</h1>
+            <p class="subtitle">Anthony Schatteman filmjének belgiai forgatási pontjai</p>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="number">18</div>
+                <div class="label">Helyszín összesen</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">3</div>
+                <div class="label">Elérhető kapcsolat</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">5+</div>
+                <div class="label">Különböző város</div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h5 class="mb-0"><i class="bi bi-funnel"></i> Helyszínek szűrése</h5>
+                </div>
+                <div class="col-md-6">
+                    <select id="filterSelect" class="form-select">
+                        <option value="all">Minden helyszín megjelenítése</option>
+                        <option value="contact">Csak elérhetőséggel rendelkezők</option>
+                        <option value="wetteren">Wetteren és környéke</option>
+                        <option value="brussels">Brussels</option>
+                        <option value="ghent">Ghent / Gent</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="location-grid" id="locationsContainer">
+
+            <div class="location-item" data-filter="all contact ghent">
+                <h3>Kasteel Rijvissche (Zaal Rijvissche)</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Zwijnaarde-Gent</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Rijvisschestraat 124, 9052 Zwijnaarde</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Abandoned house scenes / Event venue</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>9052 Ghent</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Karel Buysse</span>
+                </div>
+
+                <div class="contact-box">
+                    <h5><i class="bi bi-telephone"></i> Elérhetőség</h5>
+
+                    <div class="mb-1">
+                        <i class="bi bi-phone"></i> <a href="tel:+32(0)474933503">+32 (0)474 93 35 03</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-envelope"></i> <a href="mailto:info@zaalrijvissche.be">info@zaalrijvissche.be</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-globe"></i> <a href="http://www.lowiz.org/zaal-rijvissche" target="_blank">www.lowiz.org/zaal-rijvissche</a>
+                    </div>
+
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> IMDb, Lowiz.org</span>
+            </div>
+
+            <div class="location-item" data-filter="all brussels">
+                <h3>Grand Place / Grote Markt</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Brussels</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>1000 Brussels</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Brussels Square</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>1000 Brussels</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>City of Brussels</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> IMDb</span>
+            </div>
+
+            <div class="location-item" data-filter="all">
+                <h3>Beervelde Train Station</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Lochristi</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Beervelde, Lochristi</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Train Station</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>NMBS/SNCB (Belgian Railways)</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> IMDb</span>
+            </div>
+
+            <div class="location-item" data-filter="all">
+                <h3>9 Rue Saint-Antoine</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Viroinval</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>9 Rue Saint-Antoine, Viroinval</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Hotel</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> IMDb</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Heesvelde</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Wetteren area</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Elias grandfather's Farm</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>51°01'26.3"N 3°53'30.4"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Private property</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> IMDb</span>
+            </div>
+
+            <div class="location-item" data-filter="all contact wetteren">
+                <h3>Hotel Winterhof</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Smetledesteenweg 142, 9230 Wetteren</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Hotel filming location (15 rooms, family-run since 1972)</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Family business (since 1972)</span>
+                </div>
+
+                <div class="contact-box">
+                    <h5><i class="bi bi-telephone"></i> Elérhetőség</h5>
+
+                    <div class="mb-1">
+                        <i class="bi bi-phone"></i> <a href="tel:+32093690262">+32 09 369 02 62</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-envelope"></i> <a href="mailto:winterhof@proximedia.be">winterhof@proximedia.be</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-globe"></i> <a href="http://www.winterhof.be" target="_blank">www.winterhof.be</a>
+                    </div>
+
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit, Winterhof.be, Cvent</span>
+            </div>
+
+            <div class="location-item" data-filter="all contact">
+                <h3>Dorley Plants</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Laarne</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Zevensterstraat 1a, 9270 Laarne</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Plant nursery, filming location mentioned in credits</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Dorano and Ashley Plevoets</span>
+                </div>
+
+                <div class="contact-box">
+                    <h5><i class="bi bi-telephone"></i> Elérhetőség</h5>
+
+                    <div class="mb-1">
+                        <i class="bi bi-phone"></i> <a href="tel:+32494526152">+32 494 52 61 52</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-envelope"></i> <a href="mailto:info@dorleyplants.be">info@dorleyplants.be</a>
+                    </div>
+
+                    <div class="mb-1">
+                        <i class="bi bi-globe"></i> <a href="http://www.dorleyplants.be" target="_blank">www.dorleyplants.be</a>
+                    </div>
+
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit, Laarne.be</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Prullenbosenstraat</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Prullenbosenstraat, Wetteren</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Campfire (Dad's night show)</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Public road</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all brussels">
+                <h3>Walking through Brussels</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Brussels</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Brussels city center</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Walking scene</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>50°50'45.1"N 4°21'04.6"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>City of Brussels</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Elias riding bike to farm</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Wetteren countryside</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Opening credits</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>51°01'03.5"N 3°53'11.5"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Rural area</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Elias and Alexander ride bikes home</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Wetteren countryside</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Before eating cherries</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>51°01'41.0"N 3°55'17.6"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Rural area</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Elias and Alexander ride bikes to farm</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Wetteren countryside</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Before meeting pigs</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>51°01'38.0"N 3°55'19.6"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Rural area</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>"Ik wil gewoon bij jou zijn" scene</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Wetteren industrial area</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Industrial area scene</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-compass"></i>
+                    <span>51°01'41.9"N 3°51'58.2"E</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Industrial zone</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all brussels">
+                <h3>Manneken Pis</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Brussels</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Rue de l'Étuve / Stoofstraat, 1000 Brussels</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Famous statue / tourist attraction</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>City of Brussels</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Friend's house with pool</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Unknown private residence</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Pool scene</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Private property</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all wetteren">
+                <h3>Maaigemdijk</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren area</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Maaigemdijk, Wetteren</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Cherry scene area</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Public road</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Reddit</span>
+            </div>
+
+            <div class="location-item" data-filter="all contact wetteren">
+                <h3>Wetteren (general)</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Wetteren</span>
+                    <span class="tag">Belgium (East Flanders)</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>9230 Wetteren</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>Main filming location, director's hometown</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Municipality of Wetteren</span>
+                </div>
+
+                <div class="contact-box">
+                    <h5><i class="bi bi-telephone"></i> Elérhetőség</h5>
+
+                    <div class="mb-1">
+                        <i class="bi bi-globe"></i> <a href="http://www.wetteren.be" target="_blank">www.wetteren.be</a>
+                    </div>
+
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> Wikipedia/YouTube</span>
+            </div>
+
+            <div class="location-item" data-filter="all ghent">
+                <h3>Belgian countryside near Ghent</h3>
+
+                <div class="location-tags">
+                    <span class="tag">Near Ghent</span>
+                    <span class="tag">Belgium</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <span>Ghent area</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-camera-reels"></i>
+                    <span>General countryside filming</span>
+                </div>
+
+                <div class="info-row">
+                    <i class="bi bi-building"></i>
+                    <span>Various rural areas</span>
+                </div>
+
+                <span class="source-tag"><i class="bi bi-info-circle"></i> YouTube/Frameline</span>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <h5 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">Young Hearts (2024)</h5>
+            <p><strong>Rendező:</strong> Anthony Schatteman</p>
+            <p><strong>Gyártás:</strong> Belgium | <strong>Nyelv:</strong> Holland (Flemish)</p>
+            <p class="mt-3" style="font-size: 0.9rem;">
+                Forgatási helyszínek adatbázisa többféle forrásból összeállítva
+            </p>
+            <p style="font-size: 0.85rem; color: #94a3b8;">
+                Utoljára frissítve: 2026. február 12.
+            </p>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                    class="btn btn-primary mt-3">
+                <i class="bi bi-arrow-up"></i> Vissza a tetejére
+            </button>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('filterSelect').addEventListener('change', function() {
+            const filterValue = this.value;
+            const items = document.querySelectorAll('.location-item');
+
+            items.forEach(item => {
+                const filters = item.getAttribute('data-filter');
+
+                if (filterValue === 'all' || filters.includes(filterValue)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
