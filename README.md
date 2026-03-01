@@ -1,4 +1,4 @@
-# Young Hearts (2024) - Filming Locations Website (HU)
+# Young Hearts (2024) - Filming Locations Website
 
 ## Project Overview
 
@@ -18,6 +18,7 @@ This project contains interactive HTML websites showcasing the filming locations
 
 - **Design Style**: Gradient purple theme with card-based layout
 - **Layout**: Bootstrap 5 responsive grid (3 columns on desktop, 2 on tablet, 1 on mobile)
+- **Language Support**: English (default) and Hungarian — switchable via a fixed language button in the top-right corner
 - **Features**:
   - Hero section with film title and gradient background
   - Statistics dashboard (18 locations, 3 contacts, 5+ cities)
@@ -27,6 +28,7 @@ This project contains interactive HTML websites showcasing the filming locations
   - Equal height cards using flexbox
   - Bootstrap Icons integration
   - Smooth scroll to top functionality
+  - **EN / HU language switcher** (fixed top-right, persists via `localStorage`)
 
 ### 3. **young_hearts_locations_v2_minimal.html**
 
@@ -81,7 +83,7 @@ This project contains interactive HTML websites showcasing the filming locations
 - **Bootstrap 5.3.2**: Responsive framework
 - **Bootstrap Icons 1.11.1**: Icon library
 - **Google Fonts**: Playfair Display, Inter (v2 only)
-- **Vanilla JavaScript**: Filter functionality, smooth scrolling
+- **Vanilla JavaScript**: Filter functionality, smooth scrolling, language switching
 
 ### Browser Compatibility
 
@@ -98,6 +100,36 @@ This project contains interactive HTML websites showcasing the filming locations
 - ✅ SEO-friendly structure
 - ✅ Print-friendly layout
 - ✅ Fast loading (CDN resources)
+- ✅ Bilingual interface (English / Hungarian)
+- ✅ Language preference saved in `localStorage`
+
+---
+
+## Language Switcher (`index.html`)
+
+As of March 1, 2026, `index.html` supports two display languages:
+
+| Language | Code | Default |
+|----------|------|---------|
+| English  | `en` | ✅ Yes  |
+| Hungarian | `hu` | No      |
+
+### How it works
+
+- A fixed **EN / HU** button pair is displayed in the top-right corner of the page.
+- All visible text elements use `data-en` and `data-hu` HTML attributes to store translations.
+- The `setLang(lang)` JavaScript function swaps all text content in a single DOM pass.
+- The selected language is stored in `localStorage` under the key `preferred_lang`, so the preference persists across page reloads.
+- The page `<title>` and the filter dropdown options are also translated dynamically.
+
+### Translated elements include
+
+- Hero section subtitle and location overview
+- Statistics labels (Locations, Contacts, Cities)
+- Filter section heading and dropdown options
+- All card field labels (Address, Details, Coordinates, Operator, Contact, Source)
+- Card titles and scene descriptions
+- Footer (Director, Country, Language, generated date, scroll-to-top button)
 
 ---
 
@@ -146,6 +178,12 @@ Information compiled from:
 2. Double-click to open in your default browser
 3. No installation or server required
 
+### Switching Language
+
+1. Click the **EN** or **HU** button in the top-right corner
+2. All page text switches instantly
+3. Your choice is remembered on your next visit
+
 ### Filtering Locations
 
 1. Use the dropdown menu in the filter section
@@ -184,8 +222,17 @@ Information compiled from:
 - Photo gallery for each location
 - User reviews and ratings
 - Export to PDF functionality
-- Multi-language support (Dutch, French, English)
 - Dark mode toggle
+
+---
+
+## Changelog
+
+| Date | Change |
+|------|--------|
+| February 12, 2026 | Initial release |
+| February 15, 2026 | Minor content updates |
+| March 1, 2026 | Added EN/HU bilingual language switcher to `index.html` (English default, `localStorage` persistence) |
 
 ---
 
@@ -204,4 +251,4 @@ This is a fan-made informational resource about filming locations. All film righ
 
 ---
 
-**Last Updated**: February 15, 2026
+**Last Updated**: March 1, 2026
