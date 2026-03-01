@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young Hearts (2024) - Forgatási Helyszínek</title>
+    <title>Young Hearts (2024) - Filming Locations</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
@@ -149,20 +149,61 @@
             box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
         }
 
+        .lang-switcher {
+            position: fixed;
+            top: 18px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            gap: 6px;
+        }
+
+        .lang-switcher button {
+            border: 2px solid white;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 4px 14px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .lang-switcher button.active {
+            background: white;
+            color: #764ba2;
+        }
+
+        .lang-switcher button:hover:not(.active) {
+            background: rgba(255,255,255,0.35);
+        }
+
         @media (max-width: 768px) {
             .hero-section h1 {
                 font-size: 2rem;
+            }
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-hu" onclick="setLang('hu')">HU</button>
+    </div>
+
     <div class="container">
         <div class="hero-section">
             <div class="text-center">
                 <h1><i class="bi bi-film"></i> Young Hearts (2024)</h1>
-                <p class="lead">Forgatási Helyszínek Belgiumban</p>
-                <p><i class="bi bi-geo-alt-fill"></i> Wetteren, Ghent, Brussels és környéke</p>
+                <p class="lead" data-en="Filming Locations in Belgium" data-hu="Forgatási Helyszínek Belgiumban"></p>
+                <p><i class="bi bi-geo-alt-fill"></i> <span data-en="Wetteren, Ghent, Brussels and surroundings" data-hu="Wetteren, Ghent, Brussels és környéke"></span></p>
             </div>
         </div>
 
@@ -170,19 +211,19 @@
             <div class="col-md-4">
                 <div class="stats-box">
                     <h2>18</h2>
-                    <p>Helyszín</p>
+                    <p data-en="Locations" data-hu="Helyszín"></p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stats-box">
                     <h2>3</h2>
-                    <p>Elérhetőség</p>
+                    <p data-en="Contacts" data-hu="Elérhetőség"></p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stats-box">
                     <h2>5+</h2>
-                    <p>Város</p>
+                    <p data-en="Cities" data-hu="Város"></p>
                 </div>
             </div>
         </div>
@@ -190,15 +231,15 @@
         <div class="filter-section">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <h5 class="mb-3 mb-md-0"><i class="bi bi-funnel"></i> Szűrés helyszín típusa szerint</h5>
+                    <h5 class="mb-3 mb-md-0"><i class="bi bi-funnel"></i> <span data-en="Filter by location type" data-hu="Szűrés helyszín típusa szerint"></span></h5>
                 </div>
                 <div class="col-md-4">
                     <select id="filterSelect" class="form-select">
-                        <option value="all">Összes helyszín</option>
-                        <option value="contact">Csak elérhetőséggel</option>
-                        <option value="wetteren">Wetteren</option>
-                        <option value="brussels">Brussels</option>
-                        <option value="ghent">Ghent/Gent</option>
+                        <option value="all" data-en="All locations" data-hu="Összes helyszín"></option>
+                        <option value="contact" data-en="With contact only" data-hu="Csak elérhetőséggel"></option>
+                        <option value="wetteren" data-en="Wetteren" data-hu="Wetteren"></option>
+                        <option value="brussels" data-en="Brussels" data-hu="Brussels"></option>
+                        <option value="ghent" data-en="Ghent/Gent" data-hu="Ghent/Gent"></option>
                     </select>
                 </div>
             </div>
@@ -206,6 +247,7 @@
 
         <div class="row" id="locationsContainer">
 
+            <!-- 1 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all contact ghent">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Kasteel Rijvissche (Zaal Rijvissche)</h3>
@@ -214,53 +256,38 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Rijvisschestraat 124, 9052 Zwijnaarde</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Rijvisschestraat 124, 9052 Zwijnaarde</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Abandoned house scenes / Event venue</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> Abandoned house scenes / Event venue</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 9052 Ghent</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 9052 Ghent</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Karel Buysse</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> Karel Buysse</span>
                         </div>
-
                         <div class="contact-info mt-3">
-                            <strong><i class="bi bi-telephone-fill"></i> Elérhetőség:</strong>
+                            <strong><i class="bi bi-telephone-fill"></i> <span data-en="Contact:" data-hu="Elérhetőség:"></span></strong>
                             <div class="mt-2">
-
-                                <div class="mb-1">
-                                    <i class="bi bi-phone"></i> <a href="tel:+32(0)474933503">+32 (0)474 93 35 03</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-envelope"></i> <a href="mailto:info@zaalrijvissche.be">info@zaalrijvissche.be</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-globe"></i> <a href="http://www.lowiz.org/zaal-rijvissche" target="_blank">www.lowiz.org/zaal-rijvissche</a>
-                                </div>
-
+                                <div class="mb-1"><i class="bi bi-phone"></i> <a href="tel:+32(0)474933503">+32 (0)474 93 35 03</a></div>
+                                <div class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:info@zaalrijvissche.be">info@zaalrijvissche.be</a></div>
+                                <div class="mb-1"><i class="bi bi-globe"></i> <a href="http://www.lowiz.org/zaal-rijvissche" target="_blank">www.lowiz.org/zaal-rijvissche</a></div>
                             </div>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: IMDb, Lowiz.org</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> IMDb, Lowiz.org</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 2 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all brussels">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Grand Place / Grote Markt</h3>
@@ -269,34 +296,30 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> 1000 Brussels</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> 1000 Brussels</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Brussels Square</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> Brussels Square</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 1000 Brussels</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 1000 Brussels</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> City of Brussels</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> City of Brussels</span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: IMDb</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> IMDb</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 3 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Beervelde Train Station</h3>
@@ -305,29 +328,26 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Beervelde, Lochristi</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Beervelde, Lochristi</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Train Station</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Train Station" data-hu="Vasútállomás"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> NMBS/SNCB (Belgian Railways)</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> NMBS/SNCB (Belgian Railways)</span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: IMDb</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> IMDb</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 4 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> 9 Rue Saint-Antoine</h3>
@@ -336,24 +356,22 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> 9 Rue Saint-Antoine, Viroinval</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> 9 Rue Saint-Antoine, Viroinval</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Hotel</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Hotel" data-hu="Hotel"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: IMDb</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> IMDb</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 5 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Heesvelde</h3>
@@ -362,34 +380,30 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Wetteren area</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Wetteren area" data-hu="Wetteren környéke"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Elias grandfather's Farm</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Elias grandfather's Farm" data-hu="Elias nagyapjának farmja"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 51°01'26.3"N 3°53'30.4"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 51°01'26.3"N 3°53'30.4"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Private property</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Private property" data-hu="Magántulajdon"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: IMDb</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> IMDb</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 6 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all contact wetteren">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Hotel Winterhof</h3>
@@ -398,48 +412,34 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Smetledesteenweg 142, 9230 Wetteren</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Smetledesteenweg 142, 9230 Wetteren</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Hotel filming location (15 rooms, family-run since 1972)</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Hotel filming location (15 rooms, family-run since 1972)" data-hu="Szálloda forgatási helyszín (15 szoba, családi vállalkozás 1972 óta)"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Family business (since 1972)</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Family business (since 1972)" data-hu="Családi vállalkozás (1972 óta)"></span></span>
                         </div>
-
                         <div class="contact-info mt-3">
-                            <strong><i class="bi bi-telephone-fill"></i> Elérhetőség:</strong>
+                            <strong><i class="bi bi-telephone-fill"></i> <span data-en="Contact:" data-hu="Elérhetőség:"></span></strong>
                             <div class="mt-2">
-
-                                <div class="mb-1">
-                                    <i class="bi bi-phone"></i> <a href="tel:+32093690262">+32 09 369 02 62</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-envelope"></i> <a href="mailto:winterhof@proximedia.be">winterhof@proximedia.be</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-globe"></i> <a href="http://www.winterhof.be" target="_blank">www.winterhof.be</a>
-                                </div>
-
+                                <div class="mb-1"><i class="bi bi-phone"></i> <a href="tel:+32093690262">+32 09 369 02 62</a></div>
+                                <div class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:winterhof@proximedia.be">winterhof@proximedia.be</a></div>
+                                <div class="mb-1"><i class="bi bi-globe"></i> <a href="http://www.winterhof.be" target="_blank">www.winterhof.be</a></div>
                             </div>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit, Winterhof.be, Cvent</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit, Winterhof.be, Cvent</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 7 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all contact">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Dorley Plants</h3>
@@ -448,48 +448,34 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Zevensterstraat 1a, 9270 Laarne</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Zevensterstraat 1a, 9270 Laarne</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Plant nursery, filming location mentioned in credits</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Plant nursery, filming location mentioned in credits" data-hu="Növénykertészet, a stáblistában említett helyszín"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Dorano and Ashley Plevoets</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> Dorano and Ashley Plevoets</span>
                         </div>
-
                         <div class="contact-info mt-3">
-                            <strong><i class="bi bi-telephone-fill"></i> Elérhetőség:</strong>
+                            <strong><i class="bi bi-telephone-fill"></i> <span data-en="Contact:" data-hu="Elérhetőség:"></span></strong>
                             <div class="mt-2">
-
-                                <div class="mb-1">
-                                    <i class="bi bi-phone"></i> <a href="tel:+32494526152">+32 494 52 61 52</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-envelope"></i> <a href="mailto:info@dorleyplants.be">info@dorleyplants.be</a>
-                                </div>
-
-                                <div class="mb-1">
-                                    <i class="bi bi-globe"></i> <a href="http://www.dorleyplants.be" target="_blank">www.dorleyplants.be</a>
-                                </div>
-
+                                <div class="mb-1"><i class="bi bi-phone"></i> <a href="tel:+32494526152">+32 494 52 61 52</a></div>
+                                <div class="mb-1"><i class="bi bi-envelope"></i> <a href="mailto:info@dorleyplants.be">info@dorleyplants.be</a></div>
+                                <div class="mb-1"><i class="bi bi-globe"></i> <a href="http://www.dorleyplants.be" target="_blank">www.dorleyplants.be</a></div>
                             </div>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit, Laarne.be</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit, Laarne.be</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 8 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Prullenbosenstraat</h3>
@@ -498,209 +484,186 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Prullenbosenstraat, Wetteren</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Prullenbosenstraat, Wetteren</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Campfire (Dad's night show)</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Campfire (Dad's night show)" data-hu="Tábortűz (Apuka éjszakai show)"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Public road</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Public road" data-hu="Közterület"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 9 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all brussels">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Walking through Brussels</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Walking through Brussels" data-hu="Séta Brüsszelben"></span></h3>
                     <div>
                         <span class="badge-custom">Brussels</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Brussels city center</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Brussels city center" data-hu="Brüsszel belváros"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Walking scene</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Walking scene" data-hu="Séta jelenet"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 50°50'45.1"N 4°21'04.6"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 50°50'45.1"N 4°21'04.6"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> City of Brussels</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> City of Brussels</span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 10 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Elias riding bike to farm</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Elias riding bike to farm" data-hu="Elias biciklizik a farmra"></span></h3>
                     <div>
                         <span class="badge-custom">Wetteren area</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Wetteren countryside</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Wetteren countryside" data-hu="Wetteren vidéke"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Opening credits</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Opening credits" data-hu="Nyitó főcím"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 51°01'03.5"N 3°53'11.5"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 51°01'03.5"N 3°53'11.5"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Rural area</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Rural area" data-hu="Vidéki terület"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 11 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Elias and Alexander ride bikes home</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Elias and Alexander ride bikes home" data-hu="Elias és Alexander bicikliznek haza"></span></h3>
                     <div>
                         <span class="badge-custom">Wetteren area</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Wetteren countryside</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Wetteren countryside" data-hu="Wetteren vidéke"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Before eating cherries</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Before eating cherries" data-hu="Mielőtt megeszik a cseresznyét"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 51°01'41.0"N 3°55'17.6"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 51°01'41.0"N 3°55'17.6"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Rural area</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Rural area" data-hu="Vidéki terület"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 12 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Elias and Alexander ride bikes to farm</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Elias and Alexander ride bikes to farm" data-hu="Elias és Alexander bicikliznek a farmra"></span></h3>
                     <div>
                         <span class="badge-custom">Wetteren area</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Wetteren countryside</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Wetteren countryside" data-hu="Wetteren vidéke"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Before meeting pigs</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Before meeting pigs" data-hu="Mielőtt találkoznak a disznókkal"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 51°01'38.0"N 3°55'19.6"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 51°01'38.0"N 3°55'19.6"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Rural area</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Rural area" data-hu="Vidéki terület"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 13 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> "Ik wil gewoon bij jou zijn" scene</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> "Ik wil gewoon bij jou zijn" <span data-en="scene" data-hu="jelenet"></span></h3>
                     <div>
                         <span class="badge-custom">Wetteren area</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Wetteren industrial area</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Wetteren industrial area" data-hu="Wetteren ipari terület"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Industrial area scene</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Industrial area scene" data-hu="Ipari területi jelenet"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-compass"></i>
-                            <span><strong>Koordináták:</strong> 51°01'41.9"N 3°51'58.2"E</span>
+                            <span><strong data-en="Coordinates:" data-hu="Koordináták:"></strong> 51°01'41.9"N 3°51'58.2"E</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Industrial zone</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Industrial zone" data-hu="Ipari övezet"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 14 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all brussels">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Manneken Pis</h3>
@@ -709,60 +672,54 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Rue de l'Étuve / Stoofstraat, 1000 Brussels</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Rue de l'Étuve / Stoofstraat, 1000 Brussels</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Famous statue / tourist attraction</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Famous statue / tourist attraction" data-hu="Híres szobor / turisztikai látványosság"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> City of Brussels</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> City of Brussels</span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 15 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Friend's house with pool</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Friend's house with pool" data-hu="Barát háza medencével"></span></h3>
                     <div>
                         <span class="badge-custom">Wetteren area</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Unknown private residence</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Unknown private residence" data-hu="Ismeretlen magánlakás"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Pool scene</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Pool scene" data-hu="Medencés jelenet"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Private property</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Private property" data-hu="Magántulajdon"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 16 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all wetteren">
                 <div class="location-card">
                     <h3><i class="bi bi-pin-map-fill"></i> Maaigemdijk</h3>
@@ -771,97 +728,82 @@
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Maaigemdijk, Wetteren</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> Maaigemdijk, Wetteren</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Cherry scene area</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Cherry scene area" data-hu="Cseresznye jelenet helyszíne"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Public road</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Public road" data-hu="Közterület"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Reddit</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Reddit</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 17 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all contact wetteren">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Wetteren (general)</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> Wetteren (<span data-en="general" data-hu="általános"></span>)</h3>
                     <div>
                         <span class="badge-custom">Wetteren</span>
                         <span class="badge-custom">Belgium (East Flanders)</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> 9230 Wetteren</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> 9230 Wetteren</span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> Main filming location, director's hometown</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="Main filming location, director's hometown" data-hu="Fő forgatási helyszín, a rendező szülővárosa"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Municipality of Wetteren</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Municipality of Wetteren" data-hu="Wetteren Önkormányzata"></span></span>
                         </div>
-
                         <div class="contact-info mt-3">
-                            <strong><i class="bi bi-telephone-fill"></i> Elérhetőség:</strong>
+                            <strong><i class="bi bi-telephone-fill"></i> <span data-en="Contact:" data-hu="Elérhetőség:"></span></strong>
                             <div class="mt-2">
-
-                                <div class="mb-1">
-                                    <i class="bi bi-globe"></i> <a href="http://www.wetteren.be" target="_blank">www.wetteren.be</a>
-                                </div>
-
+                                <div class="mb-1"><i class="bi bi-globe"></i> <a href="http://www.wetteren.be" target="_blank">www.wetteren.be</a></div>
                             </div>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: Wikipedia/YouTube</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> Wikipedia/YouTube</small>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 18 -->
             <div class="col-lg-4 col-md-6 location-col" data-filter="all ghent">
                 <div class="location-card">
-                    <h3><i class="bi bi-pin-map-fill"></i> Belgian countryside near Ghent</h3>
+                    <h3><i class="bi bi-pin-map-fill"></i> <span data-en="Belgian countryside near Ghent" data-hu="Belga vidék Ghent közelében"></span></h3>
                     <div>
                         <span class="badge-custom">Near Ghent</span>
                         <span class="badge-custom">Belgium</span>
                     </div>
                     <div class="mt-3">
-
                         <div class="location-detail">
                             <i class="bi bi-geo-alt"></i>
-                            <span><strong>Cím:</strong> Ghent area</span>
+                            <span><strong data-en="Address:" data-hu="Cím:"></strong> <span data-en="Ghent area" data-hu="Ghent környéke"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-info-circle"></i>
-                            <span><strong>Részletek:</strong> General countryside filming</span>
+                            <span><strong data-en="Details:" data-hu="Részletek:"></strong> <span data-en="General countryside filming" data-hu="Általános vidéki forgatás"></span></span>
                         </div>
-
                         <div class="location-detail">
                             <i class="bi bi-building"></i>
-                            <span><strong>Üzemeltető:</strong> Various rural areas</span>
+                            <span><strong data-en="Operator:" data-hu="Üzemeltető:"></strong> <span data-en="Various rural areas" data-hu="Különböző vidéki területek"></span></span>
                         </div>
-
                         <div class="mt-3">
-                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> Forrás: YouTube/Frameline</small>
+                            <small class="text-muted"><i class="bi bi-file-earmark-text"></i> <span data-en="Source:" data-hu="Forrás:"></span> YouTube/Frameline</small>
                         </div>
                     </div>
                 </div>
@@ -873,17 +815,17 @@
             <div class="text-center">
                 <h5 class="mb-3">Young Hearts (2024)</h5>
                 <p class="mb-2">
-                    <strong>Rendező:</strong> Anthony Schatteman | 
-                    <strong>Ország:</strong> Belgium | 
-                    <strong>Nyelv:</strong> Holland
+                    <strong data-en="Director:" data-hu="Rendező:"></strong> Anthony Schatteman | 
+                    <strong data-en="Country:" data-hu="Ország:"></strong> Belgium | 
+                    <strong data-en="Language:" data-hu="Nyelv:"></strong> <span data-en="Dutch" data-hu="Holland"></span>
                 </p>
                 <p class="text-muted">
-                    <i class="bi bi-film"></i> Forgatási helyszínek összegyűjtve többféle forrásból<br>
-                    <small>Generálva: 2026. február 12.</small>
+                    <i class="bi bi-film"></i> <span data-en="Filming locations compiled from various sources" data-hu="Forgatási helyszínek összegyűjtve többféle forrásból"></span><br>
+                    <small><span data-en="Generated: February 12, 2026" data-hu="Generálva: 2026. február 12."></span></small>
                 </p>
                 <div class="mt-3">
                     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-outline-secondary btn-sm">
-                        <i class="bi bi-arrow-up"></i> Vissza a tetejére
+                        <i class="bi bi-arrow-up"></i> <span data-en="Back to top" data-hu="Vissza a tetejére"></span>
                     </button>
                 </div>
             </div>
@@ -892,20 +834,42 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // ── Language switcher ──────────────────────────────────────────────────
+        const LANG_KEY = 'preferred_lang';
+
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-en],[data-hu]').forEach(el => {
+                const text = el.getAttribute('data-' + lang);
+                if (text !== null) el.textContent = text;
+            });
+            // Update filter select option text
+            document.querySelectorAll('#filterSelect option').forEach(opt => {
+                const text = opt.getAttribute('data-' + lang);
+                if (text !== null) opt.textContent = text;
+            });
+            // Update page title
+            document.title = lang === 'hu'
+                ? 'Young Hearts (2024) – Forgatási Helyszínek'
+                : 'Young Hearts (2024) – Filming Locations';
+            // Toggle active button
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.getElementById('btn-hu').classList.toggle('active', lang === 'hu');
+            localStorage.setItem(LANG_KEY, lang);
+        }
+
+        // ── Filter ─────────────────────────────────────────────────────────────
         document.getElementById('filterSelect').addEventListener('change', function() {
             const filterValue = this.value;
-            const cards = document.querySelectorAll('.location-col');
-
-            cards.forEach(card => {
+            document.querySelectorAll('.location-col').forEach(card => {
                 const filters = card.getAttribute('data-filter');
-
-                if (filterValue === 'all' || filters.includes(filterValue)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (filterValue === 'all' || filters.includes(filterValue)) ? 'block' : 'none';
             });
         });
+
+        // ── Init ───────────────────────────────────────────────────────────────
+        const savedLang = localStorage.getItem(LANG_KEY) || 'en';
+        setLang(savedLang);
     </script>
 </body>
 </html>
